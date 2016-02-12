@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+	
+<!-- Mirrored from fdfd93f9523de7d233016eff790de57d25ff3f8d.googledrive.com/host/0B-IwJkfNov9TbThla3FDcW9lcTQ/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jan 2016 10:52:30 GMT -->
+<head>
+		<title>Board Vision Training: Mate in 1 - hard</title>
+		<script src="chess.js"></script>
+		<script src="fen.js"></script>
+		<script>	
+			var count=0;
+			var startzeit;
+			var score=0;
+			function Help()
+			{
+				var i=2;
+				var s=eval.substring(0,2);
+				while (i<eval.length)
+				{
+				s=s+" , "+eval.substring(i,i+2);
+				i+=2;
+				}
+				alert(s);
+			}
+			function trimfenarray()
+			{
+				fenteile[4]=fenteile[1];
+				fenteile[1]="w";
+				fenteile[2]="-";
+				fenteile[3]="-";
+			}
+			
+			function startmemory()
+			{	
+				startzeit = Date.now();
+				//document.getElementById("WhiteP").style.visibility = "visible";
+				document.getElementById("BlackP").style.visibility = "visible";
+				document.getElementById("Start").style.visibility = "hidden";
+				getrandomexercise();
+				trimfenarray();
+				document.getElementById('akt').innerHTML=selnum;
+				
+				document.getElementById('done').innerHTML=count;
+				{
+				var s=""+score;
+				if (count>10) document.getElementById('bemo').innerHTML=s.substring(0,5);
+				}
+				eval=fenteile[4];
+				document.getElementById('NoM').innerHTML=eval.length/2;
+				//alert(eval);
+				//flipboard(Math.random()>0.5);
+				setfen(selfen);refresh(0);				
+				count+=eval.length/2;
+			}
+
+		</script>
+	</head>
+	<body bgcolor="#eeeeee">
+
+		<table width="100%">
+			<tr>
+				<td colspan=3 align="center">
+					<h1>Mate in 1 - hard</h1>
+					<h2>Select all squares where black can be mated</h2>
+					<a href="http://aoxomoxoa-wondering.blogspot.de/2014/07/new-board-vision-exercise-mate-in-1.html"> Info </a><br>
+				</td>
+			</tr>
+			<tr>
+				
+				<td align="center">
+					<table border=1>
+						<tr>
+							<td align="center">
+									Done:<br><div id="done">0</div>
+							</td>
+							<td align="center">
+									Total:<br><div id="pos">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</td>
+							<td align="center">
+									ProbNo:<br><div id="akt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</td>
+							<td align="center">
+									Variations<br><div id="NoM">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+							</td>
+							
+							
+							<td align="center">
+									<font color="red">Mates / min:<br><div id="bemo">-</div></font>
+							</td>
+							
+						</tr>
+					</table>
+					<br>
+					
+					<script>window.screen.updateInterval = 0;
+						document.getElementById('pos').innerHTML=""+(fenarray.length);
+						setfen("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"); 
+						table();						
+					</script>
+					<table>
+					<tr>
+						<td>
+						<div id="WhiteP" style="visibility:hidden"><input type="button" name="WhiteP"   value="White +" onclick="Evaluation(1)"></div>
+						</td>
+						<td>
+						<div id="Start"><input type="button" name="Start" value="Start" onclick="startmemory()"></div>
+						</td>
+							<td>
+						<div id="BlackP" style="visibility:hidden"><input type="button" name="BlackP"  value="Help +" onclick="Help()"></div>
+						</td>
+					</tr>
+					</table
+				</td>
+			</tr>
+		</table>
+	</body>
+
+<!-- Mirrored from fdfd93f9523de7d233016eff790de57d25ff3f8d.googledrive.com/host/0B-IwJkfNov9TbThla3FDcW9lcTQ/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Jan 2016 10:52:51 GMT -->
+</html>
